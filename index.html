@@ -14,16 +14,14 @@
   header{position:sticky;top:0;z-index:40;background:var(--dark);color:#fff;display:flex;align-items:center;
     justify-content:space-between;padding:14px 32px}
   .logo{display:flex;align-items:center;gap:14px;font-size:26px;font-weight:700}
-  .logo img{height:60px;width:60px;object-fit:cover;border-radius:50%;border:3px solid var(--brand);
-    box-shadow:0 2px 8px rgba(0,0,0,.3)}
-  .cart-btn{background:var(--brand);color:#1f2622;border:none;padding:10px 18px;border-radius:30px;
-    font-weight:700;cursor:pointer;transition:.15s;position:relative}
+  .logo img{height:60px;width:60px;object-fit:cover;border-radius:50%;border:3px solid var(--brand);box-shadow:0 2px 8px rgba(0,0,0,.3)}
+  .top-actions{display:flex;gap:10px;align-items:center}
+  .cart-btn{background:var(--brand);color:#1f2622;border:none;padding:10px 18px;border-radius:30px;font-weight:700;cursor:pointer;transition:.15s;position:relative}
   .cart-btn:hover{filter:brightness(1.08)}
-  .badge{position:absolute;top:-8px;right:-8px;background:#DA291C;color:#fff;border-radius:50%;
-    min-width:22px;height:22px;font-size:12px;display:flex;align-items:center;justify-content:center;padding:0 4px}
+  .ghost-btn{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.4);padding:9px 16px;border-radius:30px;font-weight:600;cursor:pointer}
+  .badge{position:absolute;top:-8px;right:-8px;background:#DA291C;color:#fff;border-radius:50%;min-width:22px;height:22px;font-size:12px;display:flex;align-items:center;justify-content:center;padding:0 4px}
   .demo-tag{background:#00A3E0;color:#fff;font-size:11px;padding:3px 10px;border-radius:20px;font-weight:700;margin-left:10px}
-  .hero{min-height:420px;display:flex;flex-direction:column;justify-content:center;align-items:center;
-    text-align:center;color:#fff;padding:48px 24px;position:relative;overflow:hidden}
+  .hero{min-height:420px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;color:#fff;padding:48px 24px;position:relative;overflow:hidden}
   .slides{position:absolute;inset:0;z-index:0}
   .slide{position:absolute;inset:0;background-size:cover;background-position:center;opacity:0;transition:opacity 1s ease}
   .slide.active{opacity:1}
@@ -31,8 +29,7 @@
   .hero-content{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center}
   .hero h1{font-size:clamp(32px,5vw,56px)}
   .hero p{font-size:18px;margin-top:12px;opacity:.95}
-  .map-btn{margin-top:22px;background:var(--brand);color:#1f2622;text-decoration:none;
-    padding:12px 24px;border-radius:30px;font-weight:700;transition:.15s;box-shadow:0 4px 14px rgba(0,0,0,.25)}
+  .map-btn{margin-top:22px;background:var(--brand);color:#1f2622;text-decoration:none;padding:12px 24px;border-radius:30px;font-weight:700;transition:.15s;box-shadow:0 4px 14px rgba(0,0,0,.25)}
   .map-btn:hover{filter:brightness(1.08);transform:translateY(-2px)}
   .searchbar{max-width:1100px;margin:24px auto 0;padding:0 24px;display:flex;gap:12px;flex-wrap:wrap}
   .searchbar input{flex:1;min-width:200px;padding:12px 16px;border:1px solid var(--gray);border-radius:30px;font-family:inherit}
@@ -41,18 +38,15 @@
   main{max-width:1100px;margin:0 auto;padding:24px 24px 48px}
   .cat-title{font-size:28px;margin:32px 0 16px;padding-bottom:8px;border-bottom:2px solid var(--brand)}
   .grid{display:grid;gap:24px;grid-template-columns:repeat(auto-fill,minmax(260px,1fr))}
-  .card{background:#fff;border:1px solid var(--gray);border-radius:14px;overflow:hidden;
-    box-shadow:0 1px 3px rgba(0,0,0,.05);display:flex;flex-direction:column;transition:.2s}
+  .card{background:#fff;border:1px solid var(--gray);border-radius:14px;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,.05);display:flex;flex-direction:column;transition:.2s}
   .card:hover{transform:translateY(-4px);box-shadow:0 8px 24px rgba(0,0,0,.1)}
   .card .imgwrap{position:relative}
   .card img{width:100%;height:180px;object-fit:cover;background:#eee;display:block}
-  .vtag{position:absolute;top:10px;left:10px;width:18px;height:18px;border-radius:4px;background:#fff;
-    display:flex;align-items:center;justify-content:center;border:2px solid #2e7d32}
+  .vtag{position:absolute;top:10px;left:10px;width:18px;height:18px;border-radius:4px;background:#fff;display:flex;align-items:center;justify-content:center;border:2px solid #2e7d32}
   .vtag.nonveg{border-color:#DA291C}
   .vtag i{width:8px;height:8px;border-radius:50%;background:#2e7d32}
   .vtag.nonveg i{background:#DA291C}
-  .foodtag{position:absolute;top:10px;right:10px;background:var(--brand);color:#1f2622;font-size:11px;
-    font-weight:700;padding:4px 10px;border-radius:20px}
+  .foodtag{position:absolute;top:10px;right:10px;background:var(--brand);color:#1f2622;font-size:11px;font-weight:700;padding:4px 10px;border-radius:20px}
   .card-body{padding:16px;display:flex;flex-direction:column;gap:8px;flex:1}
   .card h3{font-size:18px}
   .card .desc{font-size:13px;color:#666;flex:1}
@@ -60,8 +54,7 @@
   .price{font-weight:800;color:var(--brand);font-size:18px}
   .add{background:var(--dark);color:#fff;border:none;padding:8px 16px;border-radius:8px;cursor:pointer;font-weight:600;transition:.15s}
   .add:hover{background:#000}
-  .drawer{position:fixed;top:0;right:-420px;width:390px;max-width:90vw;height:100%;background:#fff;
-    z-index:60;box-shadow:-4px 0 20px rgba(0,0,0,.15);transition:.3s;display:flex;flex-direction:column}
+  .drawer{position:fixed;top:0;right:-440px;width:410px;max-width:92vw;height:100%;background:#fff;z-index:60;box-shadow:-4px 0 20px rgba(0,0,0,.15);transition:.3s;display:flex;flex-direction:column}
   .drawer.open{right:0}
   .drawer header{background:var(--dark)}
   .drawer .items{flex:1;overflow:auto;padding:16px}
@@ -69,21 +62,30 @@
   .line img{height:50px;width:50px;object-fit:cover;border-radius:8px}
   .qty{display:flex;align-items:center;gap:8px}
   .qty button{width:26px;height:26px;border:1px solid var(--gray);background:#fff;border-radius:6px;cursor:pointer;font-weight:700}
-  .checkout-area{padding:16px;border-top:1px solid var(--gray)}
+  .checkout-area{padding:16px;border-top:1px solid var(--gray);max-height:60vh;overflow:auto}
   .total{display:flex;justify-content:space-between;font-weight:800;font-size:20px;margin-bottom:12px}
   input,textarea{width:100%;padding:10px;border:1px solid var(--gray);border-radius:8px;margin-bottom:8px;font-family:inherit}
   .primary{width:100%;background:var(--brand);color:#1f2622;border:none;padding:14px;border-radius:10px;font-weight:800;font-size:16px;cursor:pointer}
   .primary:disabled{opacity:.5;cursor:not-allowed}
+  .secondary{width:100%;background:var(--dark);color:#fff;border:none;padding:12px;border-radius:10px;font-weight:700;cursor:pointer;margin-top:8px}
   .err{color:#DA291C;font-size:12px;margin:-4px 0 8px}
+  .toggle{display:flex;gap:8px;margin-bottom:12px}
+  .toggle button{flex:1;padding:12px;border:2px solid var(--gray);background:#fff;border-radius:10px;font-weight:700;cursor:pointer;transition:.15s;font-family:inherit}
+  .toggle button.active{border-color:var(--brand);background:#fdf6e3;color:#7a5b00}
+  .editing-banner{background:#fff3cd;border:1px solid #ffe08a;color:#7a5b00;padding:10px;border-radius:8px;font-size:13px;margin-bottom:12px;display:none}
+  .editing-banner.show{display:block}
   .overlay{position:fixed;inset:0;background:rgba(0,0,0,.4);z-index:50;display:none}
   .overlay.open{display:block}
+  .modal{position:fixed;inset:0;z-index:70;display:none;align-items:center;justify-content:center;padding:20px}
+  .modal.open{display:flex}
+  .modal-box{background:#fff;border-radius:16px;padding:24px;max-width:400px;width:100%;box-shadow:0 20px 60px rgba(0,0,0,.3)}
+  .modal-box h3{font-size:22px;margin-bottom:6px}
+  .modal-box p{font-size:13px;color:#666;margin-bottom:16px}
   footer{background:var(--dark);color:#fff;text-align:center;padding:32px;margin-top:48px}
-  .map-card{display:inline-flex;align-items:center;gap:14px;margin-top:18px;background:rgba(255,255,255,.08);
-    border:1px solid rgba(255,255,255,.2);padding:12px 20px;border-radius:14px;color:#fff;text-decoration:none;transition:.15s}
+  .map-card{display:inline-flex;align-items:center;gap:14px;margin-top:18px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.2);padding:12px 20px;border-radius:14px;color:#fff;text-decoration:none;transition:.15s}
   .map-card:hover{background:rgba(255,255,255,.16)}
   .map-card img{height:44px;width:44px;object-fit:cover;border-radius:50%;border:2px solid var(--brand)}
-  .toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(100px);background:#1f2622;color:#fff;
-    padding:14px 24px;border-radius:30px;z-index:80;transition:.3s;opacity:0}
+  .toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(100px);background:#1f2622;color:#fff;padding:14px 24px;border-radius:30px;z-index:80;transition:.3s;opacity:0;text-align:center}
   .toast.show{transform:translateX(-50%) translateY(0);opacity:1}
   .empty{text-align:center;color:#888;padding:40px 0}
 </style>
@@ -91,7 +93,10 @@
 <body>
   <header>
     <div class="logo"><img id="logo" alt="logo" /><span id="brandName">Loading…</span><span class="demo-tag" id="demoTag" style="display:none">DEMO</span></div>
-    <button class="cart-btn" onclick="toggleCart(true)">🛒 Cart <span class="badge" id="badge">0</span></button>
+    <div class="top-actions">
+      <button class="ghost-btn" onclick="openEditModal()">✏️ Edit Order</button>
+      <button class="cart-btn" onclick="toggleCart(true)">🛒 Cart <span class="badge" id="badge">0</span></button>
+    </div>
   </header>
 
   <section class="hero" id="hero">
@@ -119,20 +124,52 @@
 
   <div class="overlay" id="overlay" onclick="toggleCart(false)"></div>
   <aside class="drawer" id="drawer">
-    <header><span class="logo" style="font-size:18px">Your Order</span>
+    <header><span class="logo" style="font-size:18px" id="drawerTitle">Your Order</span>
       <button class="cart-btn" style="padding:6px 12px" onclick="toggleCart(false)">✕</button></header>
     <div class="items" id="cartItems"></div>
     <div class="checkout-area">
+      <div class="editing-banner" id="editBanner"></div>
       <div class="total"><span>Total</span><span id="cartTotal"></span></div>
-      <input id="cName" placeholder="Your name" />
-      <div class="err" id="eName"></div>
-      <input id="cPhone" placeholder="Phone number" />
-      <div class="err" id="ePhone"></div>
-      <textarea id="cAddr" rows="2" placeholder="Delivery address"></textarea>
-      <div class="err" id="eAddr"></div>
+
+      <!-- ▼ Dine-in / Delivery choice -->
+      <div class="toggle">
+        <button id="btnDinein" class="active" onclick="setMode('Dine-in')">🍽️ Dine-in</button>
+        <button id="btnDelivery" onclick="setMode('Delivery')">🛵 Delivery</button>
+      </div>
+
+      <!-- ▼ Dine-in field -->
+      <div id="dineinFields">
+        <input id="cTable" placeholder="Table Number (e.g. 5)" />
+        <div class="err" id="eTable"></div>
+      </div>
+
+      <!-- ▼ Delivery fields -->
+      <div id="deliveryFields" style="display:none">
+        <input id="cName" placeholder="Your name" />
+        <div class="err" id="eName"></div>
+        <input id="cPhone" placeholder="Phone number" />
+        <div class="err" id="ePhone"></div>
+        <textarea id="cAddr" rows="2" placeholder="Delivery address"></textarea>
+        <div class="err" id="eAddr"></div>
+      </div>
+
       <button class="primary" id="placeBtn" onclick="placeOrder()">Place Order</button>
     </div>
   </aside>
+
+  <!-- ▼ Edit-order modal -->
+  <div class="modal" id="editModal">
+    <div class="modal-box">
+      <h3>✏️ Edit an existing order</h3>
+      <p>Enter your Order ID (e.g. ORD-1001) or your Table Number to load your order and add more items.</p>
+      <input id="lookupId" placeholder="Order ID (e.g. ORD-1001)" />
+      <div style="text-align:center;color:#999;margin:6px 0;font-weight:700">— OR —</div>
+      <input id="lookupTable" placeholder="Table Number (e.g. 5)" />
+      <div class="err" id="eLookup"></div>
+      <button class="primary" id="lookupBtn" onclick="fetchOrder()">Load My Order</button>
+      <button class="secondary" onclick="closeEditModal()">Cancel</button>
+    </div>
+  </div>
 
   <div class="toast" id="toast"></div>
 
@@ -141,32 +178,21 @@
   const API_URL = "https://script.google.com/macros/s/AKfycbwTaPxe-qM58KhFgt8jI9PHEVdKzJ2f82FDSRHQUfwrJJuGQ5IpjYfWI4BlmePRTozAfg/exec";
   const IS_LIVE = !API_URL.includes("XXXXX");
 
-  // ── Your menu loaded as DEMO (so it previews instantly) ──
   const DEMO = {
     settings: {
       HotelName: "Vastad Special", Tagline: "Authentic flavours, served with love",
       LogoURL: "https://images.unsplash.com/photo-1552566626-52f8b828add9?w=100&h=100&fit=crop",
       Phone: "+91 98765 43210", Address: "Main Road, Your City", Currency: "₹",
-      HeroImages: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=1600&h=600&fit=crop,https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1600&h=600&fit=crop,https://images.unsplash.com/photo-1552566626-52f8b828add9?w=1600&h=600&fit=crop,https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=1600&h=600&fit=crop",
-      MapURL: "https://maps.google.com/?q=restaurant",
-      BrandColor: "#C8A24B"
+      HeroImages: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=1600&h=600&fit=crop,https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1600&h=600&fit=crop,https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=1600&h=600&fit=crop",
+      MapURL: "https://maps.google.com/?q=restaurant", BrandColor: "#C8A24B"
     },
     menu: [
-      { Category: "Starters", ItemName: "Paneer Tikka", Description: "Char-grilled cottage cheese with spices", Price: 220, Type: "Veg", Tag: "Bestseller", Available: "Yes", PhotoURL: "" },
-      { Category: "Main Course", ItemName: "Butter Chicken", Description: "Creamy tomato gravy with tender chicken", Price: 340, Type: "Nonveg", Tag: "Bestseller", Available: "Yes", PhotoURL: "" },
+      { Category: "Starters", ItemName: "Paneer Tikka", Description: "Char-grilled cottage cheese", Price: 220, Type: "Veg", Tag: "Bestseller", Available: "Yes", PhotoURL: "" },
+      { Category: "Main Course", ItemName: "Butter Chicken", Description: "Creamy tomato gravy with chicken", Price: 340, Type: "Nonveg", Tag: "Bestseller", Available: "Yes", PhotoURL: "" },
       { Category: "Soups", ItemName: "Veg Soup", Description: "Hearty mixed vegetable soup", Price: 90, Type: "Veg", Tag: "", Available: "Yes", PhotoURL: "" },
-      { Category: "Soups", ItemName: "Chicken Soup", Description: "Warm, comforting chicken broth", Price: 120, Type: "Nonveg", Tag: "", Available: "Yes", PhotoURL: "" },
-      { Category: "Rice & Biryani", ItemName: "Rice Plate", Description: "Steamed rice with dal & curry", Price: 130, Type: "Veg", Tag: "", Available: "Yes", PhotoURL: "" },
-      { Category: "Rice & Biryani", ItemName: "Veg Biryani", Description: "Fragrant rice with mixed vegetables", Price: 180, Type: "Veg", Tag: "", Available: "Yes", PhotoURL: "" },
-      { Category: "Rice & Biryani", ItemName: "Chicken Biryani", Description: "Aromatic biryani with tender chicken", Price: 240, Type: "Nonveg", Tag: "Bestseller", Available: "Yes", PhotoURL: "" },
-      { Category: "Rice & Biryani", ItemName: "Mutton Biryani", Description: "Slow-cooked biryani with juicy mutton", Price: 300, Type: "Nonveg", Tag: "", Available: "Yes", PhotoURL: "" },
-      { Category: "Chinese", ItemName: "Chicken Fried Rice", Description: "Wok-tossed rice with chicken & veggies", Price: 190, Type: "Nonveg", Tag: "", Available: "Yes", PhotoURL: "" },
-      { Category: "Chinese", ItemName: "Chicken Noodles", Description: "Stir-fried noodles with chicken", Price: 190, Type: "Nonveg", Tag: "", Available: "Yes", PhotoURL: "" },
-      { Category: "Desserts", ItemName: "Ice-Cream", Description: "Chilled creamy scoop of the day", Price: 80, Type: "Veg", Tag: "", Available: "Yes", PhotoURL: "" },
+      { Category: "Soups", ItemName: "Chicken Soup", Description: "Warm chicken broth", Price: 120, Type: "Nonveg", Tag: "", Available: "Yes", PhotoURL: "" },
+      { Category: "Rice & Biryani", ItemName: "Chicken Biryani", Description: "Aromatic biryani with chicken", Price: 240, Type: "Nonveg", Tag: "Bestseller", Available: "Yes", PhotoURL: "" },
       { Category: "Beverages / Drinks", ItemName: "Thumbs Up", Description: "Chilled soft drink", Price: 40, Type: "Veg", Tag: "", Available: "Yes", PhotoURL: "" },
-      { Category: "Thali", ItemName: "Veg Thali", Description: "Complete veg meal platter", Price: 200, Type: "Veg", Tag: "", Available: "Yes", PhotoURL: "" },
-      { Category: "Thali", ItemName: "Chicken Thali", Description: "Full chicken meal with sides", Price: 280, Type: "Nonveg", Tag: "", Available: "Yes", PhotoURL: "" },
-      { Category: "Thali", ItemName: "Mutton Thali", Description: "Full mutton meal with sides", Price: 340, Type: "Nonveg", Tag: "", Available: "Yes", PhotoURL: "" },
       { Category: "Thali", ItemName: "Vastad Special Chicken Thali", Description: "Our signature loaded chicken thali", Price: 380, Type: "Nonveg", Tag: "Chef's Special", Available: "Yes", PhotoURL: "" }
     ]
   };
@@ -174,57 +200,27 @@
   let CFG = { currency: "₹" };
   let ALL_ITEMS = [];
   let activeCat = "All";
+  let orderMode = "Dine-in";     // ▼ current order type
+  let editingOrderId = null;     // ▼ set when editing an existing order
   const cart = {};
   const $ = function (id) { return document.getElementById(id); };
-
   function unsplash(id) { return "https://images.unsplash.com/photo-" + id + "?w=500&h=350&fit=crop"; }
 
-  // ── EXACT photo match for YOUR dishes (most accurate) ──
   const EXACT_PICS = {
-    "paneer tikka":"1567188040759-fb8a883dc6d8",
-    "butter chicken":"1603894584373-5ac82b2ae398",
-    "veg soup":"1547592180-85f173990554",
-    "chicken soup":"1604152135912-04a022e23696",
-    "rice plate":"1516684732162-798a0062be99",
-    "veg biryani":"1589302168068-964664d93dc0",
-    "chicken biryani":"1563379091339-03b21ab4a4f8",
-    "mutton biryani":"1631515243349-e0cb75fb8d3a",
-    "chicken fried rice":"1603133872878-684f208fb84b",
-    "chicken noodles":"1585032226651-759b368d7246",
-    "ice-cream":"1560008581-09826d1de69e",
-    "ice cream":"1560008581-09826d1de69e",
-    "thumbs up":"1581006852262-e4307cf6283a",
-    "veg thali":"1567620905732-2d1ec7ab7445",
-    "chicken thali":"1626500155537-90f5e3e0c4f5",
-    "mutton thali":"1585937421612-70a008356fbe",
+    "paneer tikka":"1567188040759-fb8a883dc6d8","butter chicken":"1603894584373-5ac82b2ae398",
+    "veg soup":"1547592180-85f173990554","chicken soup":"1604152135912-04a022e23696",
+    "chicken biryani":"1563379091339-03b21ab4a4f8","thumbs up":"1581006852262-e4307cf6283a",
     "vastad special chicken thali":"1601050690597-df0568f70950"
   };
-
-  // ── Keyword fallback (for any future dishes) ──
   const FOOD_PICS = {
-    paneer:"1567188040759-fb8a883dc6d8", tikka:"1567188040759-fb8a883dc6d8",
-    soup:"1547592180-85f173990554", biryani:"1563379091339-03b21ab4a4f8",
-    "fried rice":"1603133872878-684f208fb84b", noodles:"1585032226651-759b368d7246",
-    thali:"1567620905732-2d1ec7ab7445", mutton:"1585937421612-70a008356fbe",
-    chicken:"1603894584373-5ac82b2ae398", fish:"1580476262798-bddd9f4b7369",
-    egg:"1607103058027-4c5e5c8b1c4a", rice:"1516684732162-798a0062be99",
-    dal:"1546833999-b9f581a1996d", curry:"1631452180519-c014fe946bc7",
-    naan:"1626777552726-4a6b54c97e46", bread:"1626777552726-4a6b54c97e46",
-    roti:"1626777552726-4a6b54c97e46", pizza:"1513104890138-7c749659a591",
-    burger:"1568901346375-23c9450c58cd", dosa:"1630383249896-424e482df921",
-    kebab:"1599487488170-d11ec9c172f0", tandoori:"1599487488170-d11ec9c172f0",
-    "ice-cream":"1560008581-09826d1de69e", icecream:"1560008581-09826d1de69e",
-    gulab:"1601303516361-1a4e6e0f1b1b", cake:"1578985545062-69928b1d9587",
-    dessert:"1551024601-bec78aea704b", chai:"1571934811356-5cc061b6821f",
-    tea:"1571934811356-5cc061b6821f", coffee:"1509042239860-f550ce710b93",
-    lassi:"1553530666-ba11a7da3888", juice:"1600271886742-f049cd451bba",
-    thumbs:"1581006852262-e4307cf6283a", soda:"1581006852262-e4307cf6283a",
-    cola:"1581006852262-e4307cf6283a", drink:"1544145945-f90425340c7e",
-    beverage:"1544145945-f90425340c7e"
+    paneer:"1567188040759-fb8a883dc6d8",soup:"1547592180-85f173990554",biryani:"1563379091339-03b21ab4a4f8",
+    "fried rice":"1603133872878-684f208fb84b",noodles:"1585032226651-759b368d7246",thali:"1567620905732-2d1ec7ab7445",
+    mutton:"1585937421612-70a008356fbe",chicken:"1603894584373-5ac82b2ae398",rice:"1516684732162-798a0062be99",
+    icecream:"1560008581-09826d1de69e","ice-cream":"1560008581-09826d1de69e",dessert:"1551024601-bec78aea704b",
+    thumbs:"1581006852262-e4307cf6283a",soda:"1581006852262-e4307cf6283a",drink:"1544145945-f90425340c7e"
   };
-  const DEFAULT_PIC = "1504674900247-0877df9cc836"; // generic food platter
+  const DEFAULT_PIC = "1504674900247-0877df9cc836";
 
-  // Auto-picks a photo: exact name first, then keyword, then default
   function autoPhoto(item) {
     const name = (item.ItemName || "").toLowerCase().trim();
     if (EXACT_PICS[name]) return unsplash(EXACT_PICS[name]);
@@ -233,14 +229,11 @@
     for (const key in FOOD_PICS) { if (text.includes(key)) { id = FOOD_PICS[key]; break; } }
     return unsplash(id);
   }
-
-  // Converts a Google Drive link, OR auto-picks a photo if the field is empty
   function driveFix(url, item) {
     if (!url || !String(url).trim()) return item ? autoPhoto(item) : unsplash(DEFAULT_PIC);
     const m = String(url).match(/\/d\/([\w-]+)/) || String(url).match(/id=([\w-]+)/);
     return m ? "https://drive.google.com/thumbnail?id=" + m[1] + "&sz=w1600" : url;
   }
-
   function money(n) { return CFG.currency + Number(n).toLocaleString(); }
   function esc(s) { return String(s).replace(/'/g, "\\'"); }
 
@@ -256,9 +249,8 @@
       slides[idx].classList.remove("active");
       idx = (idx + 1) % slides.length;
       slides[idx].classList.add("active");
-    }, 4000); // change image every 4 seconds
+    }, 4000);
   }
-
   function getHeroImages(s) {
     let imgs = s.HeroImages || s.HeroImage;
     if (Array.isArray(imgs)) return imgs.filter(Boolean);
@@ -271,10 +263,7 @@
     try {
       if (!IS_LIVE) throw new Error("demo");
       data = await (await fetch(API_URL)).json();
-    } catch (e) {
-      data = DEMO;
-      $("demoTag").style.display = "inline-block";
-    }
+    } catch (e) { data = DEMO; $("demoTag").style.display = "inline-block"; }
     const s = Array.isArray(data.settings) ? {} : data.settings;
     CFG.currency = s.Currency || "₹";
     if (s.BrandColor) document.documentElement.style.setProperty("--brand", s.BrandColor);
@@ -286,17 +275,13 @@
     $("heroTag").textContent = s.Tagline || "";
     $("fName").textContent = s.HotelName || "";
     $("fContact").textContent = [s.Address, s.Phone].filter(Boolean).join("  •  ");
-
     if (s.MapURL) {
       $("mapBtn").href = s.MapURL; $("mapBtn").style.display = "inline-block";
       $("mapLink").href = s.MapURL; $("mapLink").style.display = "inline-flex";
     }
-
     startSlides(getHeroImages(s));
-
     ALL_ITEMS = data.menu.filter(function (i) { return i.ItemName && String(i.Available).toLowerCase() !== "no"; });
-    buildChips();
-    renderMenu();
+    buildChips(); renderMenu();
   }
 
   function buildChips() {
@@ -318,13 +303,12 @@
     });
     const cats = {};
     items.forEach(function (i) { (cats[i.Category || "Menu"] = cats[i.Category || "Menu"] || []).push(i); });
-
     let html = "";
     Object.keys(cats).forEach(function (cat) {
       html += "<h2 class='cat-title'>" + cat + "</h2><div class='grid'>";
       cats[cat].forEach(function (i) {
         const isNon = String(i.Type).toLowerCase() === "nonveg";
-        const photo = driveFix(i.PhotoURL, i); // auto-picks when empty
+        const photo = driveFix(i.PhotoURL, i);
         html += "<div class='card'><div class='imgwrap'>" +
           "<img src='" + photo + "' alt='" + i.ItemName + "'>" +
           "<span class='vtag" + (isNon ? " nonveg" : "") + "'><i></i></span>" +
@@ -340,79 +324,15 @@
     $("menu").innerHTML = html || "<p class='empty'>No dishes match your search.</p>";
   }
 
-  function addItem(name, price, img) {
-    if (!cart[name]) cart[name] = { name: name, price: price, img: img, qty: 0 };
-    cart[name].qty++;
-    renderCart();
-    showToast(name + " added");
-  }
-  function changeQty(name, d) {
-    if (!cart[name]) return;
-    cart[name].qty += d;
-    if (cart[name].qty <= 0) delete cart[name];
-    renderCart();
-  }
-  function renderCart() {
-    const list = Object.values(cart);
-    let count = 0, total = 0, html = "";
-    list.forEach(function (c) {
-      count += c.qty; total += c.qty * c.price;
-      html += "<div class='line'><img src='" + c.img + "'>" +
-        "<div style='flex:1'><b>" + c.name + "</b><br><small>" + money(c.price) + "</small></div>" +
-        "<div class='qty'><button onclick=\"changeQty('" + esc(c.name) + "',-1)\">−</button>" +
-        "<span>" + c.qty + "</span>" +
-        "<button onclick=\"changeQty('" + esc(c.name) + "',1)\">+</button></div></div>";
-    });
-    $("cartItems").innerHTML = html || "<p class='empty'>Your cart is empty.</p>";
-    $("badge").textContent = count;
-    $("cartTotal").textContent = money(total);
-  }
-  function toggleCart(open) {
-    $("drawer").classList.toggle("open", open);
-    $("overlay").classList.toggle("open", open);
-  }
-  function showToast(msg) {
-    const t = $("toast"); t.textContent = msg; t.classList.add("show");
-    setTimeout(function () { t.classList.remove("show"); }, 2000);
-  }
-  function validate() {
-    let ok = true;
-    const checks = [["cName", "eName", /.{2,}/, "Enter your name"],
-      ["cPhone", "ePhone", /^[+\d][\d\s-]{7,}$/, "Enter a valid phone"],
-      ["cAddr", "eAddr", /.{5,}/, "Enter your address"]];
-    checks.forEach(function (c) {
-      const bad = !c[2].test($(c[0]).value.trim());
-      $(c[1]).textContent = bad ? c[3] : "";
-      if (bad) ok = false;
-    });
-    return ok;
-  }
-  async function placeOrder() {
-    const items = Object.values(cart);
-    if (!items.length) return showToast("Cart is empty");
-    if (!validate()) return;
-    const total = items.reduce(function (s, c) { return s + c.qty * c.price; }, 0);
-    const btn = $("placeBtn"); btn.disabled = true; btn.textContent = "Placing…";
-    try {
-      if (IS_LIVE) {
-        await fetch(API_URL, {
-          method: "POST", headers: { "Content-Type": "text/plain;charset=utf-8" },
-          body: JSON.stringify({ name: $("cName").value, phone: $("cPhone").value,
-            address: $("cAddr").value, items: items, total: total })
-        });
-      }
-      Object.keys(cart).forEach(function (k) { delete cart[k]; });
-      renderCart(); toggleCart(false);
-      ["cName", "cPhone", "cAddr"].forEach(function (id) { $(id).value = ""; });
-      showToast(IS_LIVE ? "✅ Order placed! We'll call you shortly." : "✅ Demo order placed (no data sent)");
-    } catch (e) {
-      showToast("Failed. Please try again.");
-    }
-    btn.disabled = false; btn.textContent = "Place Order";
+  // ▼ Switch between Dine-in and Delivery
+  function setMode(mode) {
+    orderMode = mode;
+    $("btnDinein").classList.toggle("active", mode === "Dine-in");
+    $("btnDelivery").classList.toggle("active", mode === "Delivery");
+    $("dineinFields").style.display = mode === "Dine-in" ? "block" : "none";
+    $("deliveryFields").style.display = mode === "Delivery" ? "block" : "none";
   }
 
-  document.addEventListener("keydown", function (e) { if (e.key === "Escape") toggleCart(false); });
-  load();
-</script>
-</body>
-</html>
+  function addItem(name, price, img) {
+    if (!cart[name]) cart[name] = { name: name, price: price, img: img, qty: 0 };
+    cart[name
