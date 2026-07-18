@@ -5,73 +5,59 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Hotel</title>
+<title>Staff Ordering</title>
 <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet" />
 <style>
   :root{--brand:#C8A24B;--dark:#1f2622;--cream:#faf7f0;--gray:#E6E6E6;--text:#2b2b2b}
   *{margin:0;padding:0;box-sizing:border-box}
   body{font-family:'Open Sans',sans-serif;color:var(--text);background:var(--cream)}
   h1,h2,.logo{font-family:'Playfair Display',serif}
-  header{position:sticky;top:0;z-index:40;background:var(--dark);color:#fff;display:flex;align-items:center;justify-content:space-between;padding:14px 32px}
-  .logo{display:flex;align-items:center;gap:14px;font-size:26px;font-weight:700}
-  .logo img{height:60px;width:60px;object-fit:cover;border-radius:50%;border:3px solid var(--brand)}
-  .top-actions{display:flex;gap:10px;align-items:center}
-  .cart-btn{background:var(--brand);color:#1f2622;border:none;padding:10px 18px;border-radius:30px;font-weight:700;cursor:pointer;transition:.15s;position:relative}
-  .cart-btn:hover{filter:brightness(1.08)}
-  .ghost-btn{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.4);padding:9px 16px;border-radius:30px;font-weight:600;cursor:pointer}
+  header{position:sticky;top:0;z-index:40;background:var(--dark);color:#fff;display:flex;align-items:center;justify-content:space-between;padding:14px 24px}
+  .logo{display:flex;align-items:center;gap:12px;font-size:22px;font-weight:700}
+  .top-actions{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+  .who{font-size:13px;opacity:.9}
+  .cart-btn{background:var(--brand);color:#1f2622;border:none;padding:10px 16px;border-radius:30px;font-weight:700;cursor:pointer;position:relative}
+  .ghost-btn{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.4);padding:9px 14px;border-radius:30px;font-weight:600;cursor:pointer}
   .badge{position:absolute;top:-8px;right:-8px;background:#DA291C;color:#fff;border-radius:50%;min-width:22px;height:22px;font-size:12px;display:flex;align-items:center;justify-content:center;padding:0 4px}
-  .demo-tag{background:#00A3E0;color:#fff;font-size:11px;padding:3px 10px;border-radius:20px;font-weight:700;margin-left:10px}
-  .hero{min-height:420px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;color:#fff;padding:48px 24px;position:relative;overflow:hidden}
-  .slides{position:absolute;inset:0;z-index:0}
-  .slide{position:absolute;inset:0;background-size:cover;background-position:center;opacity:0;transition:opacity 1s ease}
-  .slide.active{opacity:1}
-  .hero::after{content:"";position:absolute;inset:0;background:rgba(20,25,22,.55);z-index:1}
-  .hero-content{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center}
-  .hero h1{font-size:clamp(32px,5vw,56px)}
-  .hero p{font-size:18px;margin-top:12px;opacity:.95}
-  .map-btn{margin-top:22px;background:var(--brand);color:#1f2622;text-decoration:none;padding:12px 24px;border-radius:30px;font-weight:700;transition:.15s;box-shadow:0 4px 14px rgba(0,0,0,.25)}
-  .map-btn:hover{filter:brightness(1.08);transform:translateY(-2px)}
-  .searchbar{max-width:1100px;margin:24px auto 0;padding:0 24px;display:flex;gap:12px;flex-wrap:wrap}
+  main{max-width:1100px;margin:0 auto;padding:20px 20px 48px}
+  .searchbar{max-width:1100px;margin:16px auto 0;padding:0 20px;display:flex;gap:12px;flex-wrap:wrap}
   .searchbar input{flex:1;min-width:200px;padding:12px 16px;border:1px solid var(--gray);border-radius:30px;font-family:inherit}
-  .chip{border:1px solid var(--gray);background:#fff;padding:8px 16px;border-radius:30px;cursor:pointer;font-weight:600;transition:.15s}
+  #chips{display:flex;gap:8px;flex-wrap:wrap}
+  .chip{border:1px solid var(--gray);background:#fff;padding:8px 16px;border-radius:30px;cursor:pointer;font-weight:600}
   .chip.active{background:var(--dark);color:#fff;border-color:var(--dark)}
-  main{max-width:1100px;margin:0 auto;padding:24px 24px 48px}
-  .cat-title{font-size:28px;margin:32px 0 16px;padding-bottom:8px;border-bottom:2px solid var(--brand)}
-  .grid{display:grid;gap:24px;grid-template-columns:repeat(auto-fill,minmax(260px,1fr))}
-  .card{background:#fff;border:1px solid var(--gray);border-radius:14px;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,.05);display:flex;flex-direction:column;transition:.2s}
-  .card:hover{transform:translateY(-4px);box-shadow:0 8px 24px rgba(0,0,0,.1)}
+  .cat-title{font-size:24px;margin:28px 0 14px;padding-bottom:8px;border-bottom:2px solid var(--brand)}
+  .grid{display:grid;gap:20px;grid-template-columns:repeat(auto-fill,minmax(220px,1fr))}
+  .card{background:#fff;border:1px solid var(--gray);border-radius:14px;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,.05);display:flex;flex-direction:column}
   .card .imgwrap{position:relative}
-  .card img{width:100%;height:180px;object-fit:cover;background:#eee;display:block}
+  .card img{width:100%;height:150px;object-fit:cover;background:#eee;display:block}
   .vtag{position:absolute;top:10px;left:10px;width:18px;height:18px;border-radius:4px;background:#fff;display:flex;align-items:center;justify-content:center;border:2px solid #2e7d32}
   .vtag.nonveg{border-color:#DA291C}
   .vtag i{width:8px;height:8px;border-radius:50%;background:#2e7d32}
   .vtag.nonveg i{background:#DA291C}
   .foodtag{position:absolute;top:10px;right:10px;background:var(--brand);color:#1f2622;font-size:11px;font-weight:700;padding:4px 10px;border-radius:20px}
-  .card-body{padding:16px;display:flex;flex-direction:column;gap:8px;flex:1}
-  .card h3{font-size:18px}
-  .card .desc{font-size:13px;color:#666;flex:1}
+  .card-body{padding:14px;display:flex;flex-direction:column;gap:6px;flex:1}
+  .card h3{font-size:17px}
+  .card .desc{font-size:12px;color:#666;flex:1}
   .card .row{display:flex;align-items:center;justify-content:space-between;margin-top:8px}
-  .price{font-weight:800;color:var(--brand);font-size:18px}
-  .add{background:var(--dark);color:#fff;border:none;padding:8px 16px;border-radius:8px;cursor:pointer;font-weight:600;transition:.15s}
-  .add:hover{background:#000}
-  .drawer{position:fixed;top:0;right:-440px;width:410px;max-width:92vw;height:100%;background:#fff;z-index:60;box-shadow:-4px 0 20px rgba(0,0,0,.15);transition:.3s;display:flex;flex-direction:column}
+  .price{font-weight:800;color:var(--brand);font-size:17px}
+  .add{background:var(--dark);color:#fff;border:none;padding:8px 14px;border-radius:8px;cursor:pointer;font-weight:600}
+  .drawer{position:fixed;top:0;right:-440px;width:410px;max-width:94vw;height:100%;background:#fff;z-index:60;box-shadow:-4px 0 20px rgba(0,0,0,.15);transition:.3s;display:flex;flex-direction:column}
   .drawer.open{right:0}
   .drawer header{background:var(--dark)}
   .drawer .items{flex:1;overflow:auto;padding:16px}
   .line{display:flex;gap:10px;align-items:center;padding:10px 0;border-bottom:1px solid var(--gray)}
   .line img{height:50px;width:50px;object-fit:cover;border-radius:8px}
   .qty{display:flex;align-items:center;gap:8px}
-  .qty button{width:26px;height:26px;border:1px solid var(--gray);background:#fff;border-radius:6px;cursor:pointer;font-weight:700}
-  .checkout-area{padding:16px;border-top:1px solid var(--gray);max-height:62vh;overflow:auto}
+  .qty button{width:28px;height:28px;border:1px solid var(--gray);background:#fff;border-radius:6px;cursor:pointer;font-weight:700}
+  .checkout-area{padding:16px;border-top:1px solid var(--gray);max-height:60vh;overflow:auto}
   .total{display:flex;justify-content:space-between;font-weight:800;font-size:20px;margin-bottom:12px}
   input,textarea{width:100%;padding:10px;border:1px solid var(--gray);border-radius:8px;margin-bottom:8px;font-family:inherit}
   .primary{width:100%;background:var(--brand);color:#1f2622;border:none;padding:14px;border-radius:10px;font-weight:800;font-size:16px;cursor:pointer}
   .primary:disabled{opacity:.5;cursor:not-allowed}
   .secondary{width:100%;background:var(--dark);color:#fff;border:none;padding:12px;border-radius:10px;font-weight:700;cursor:pointer;margin-top:8px}
   .err{color:#DA291C;font-size:12px;margin:-4px 0 8px}
-  .hint{font-size:12px;color:#777;margin:-4px 0 10px}
   .toggle{display:flex;gap:8px;margin-bottom:12px}
-  .toggle button{flex:1;padding:12px;border:2px solid var(--gray);background:#fff;border-radius:10px;font-weight:700;cursor:pointer;transition:.15s;font-family:inherit}
+  .toggle button{flex:1;padding:12px;border:2px solid var(--gray);background:#fff;border-radius:10px;font-weight:700;cursor:pointer;font-family:inherit}
   .toggle button.active{border-color:var(--brand);background:#fdf6e3;color:#7a5b00}
   .editing-banner{background:#fff3cd;border:1px solid #ffe08a;color:#7a5b00;padding:10px;border-radius:8px;font-size:13px;margin-bottom:12px;display:none}
   .editing-banner.show{display:block}
@@ -82,154 +68,129 @@
   .modal-box{background:#fff;border-radius:16px;padding:24px;max-width:420px;width:100%;box-shadow:0 20px 60px rgba(0,0,0,.3);max-height:88vh;overflow:auto}
   .modal-box h3{font-size:22px;margin-bottom:6px}
   .modal-box p{font-size:13px;color:#666;margin-bottom:16px}
-  .link-box{word-break:break-all;background:#f7f4ec;border:1px dashed var(--brand);padding:12px;border-radius:8px;font-size:12px;margin-bottom:12px}
-  .pill{display:inline-block;padding:3px 10px;border-radius:20px;font-size:12px;font-weight:700}
-  .pill.paid{background:#e6f4d8;color:#3d6b00}
-  .pill.unpaid{background:#fdecea;color:#DA291C}
-  .bill-row{display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid var(--gray);font-size:14px}
-  footer{background:var(--dark);color:#fff;text-align:center;padding:32px;margin-top:48px}
-  .map-card{display:inline-flex;align-items:center;gap:14px;margin-top:18px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.2);padding:12px 20px;border-radius:14px;color:#fff;text-decoration:none;transition:.15s}
-  .map-card:hover{background:rgba(255,255,255,.16)}
-  .map-card img{height:44px;width:44px;object-fit:cover;border-radius:50%;border:2px solid var(--brand)}
+  .open-order{display:flex;justify-content:space-between;align-items:center;padding:12px;border:1px solid var(--gray);border-radius:10px;margin-bottom:8px;cursor:pointer}
+  .open-order:hover{background:#faf7f0}
+  .open-order b{font-size:15px}
+  .open-order small{color:#666}
   .toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(100px);background:#1f2622;color:#fff;padding:14px 24px;border-radius:30px;z-index:80;transition:.3s;opacity:0;text-align:center}
   .toast.show{transform:translateX(-50%) translateY(0);opacity:1}
   .empty{text-align:center;color:#888;padding:40px 0}
+  /* Login screen */
+  #loginScreen{position:fixed;inset:0;z-index:90;background:var(--dark);display:flex;align-items:center;justify-content:center;padding:20px}
+  .login-box{background:#fff;border-radius:18px;padding:32px;max-width:380px;width:100%;box-shadow:0 20px 60px rgba(0,0,0,.4)}
+  .login-box h1{font-size:26px;margin-bottom:4px;color:var(--dark)}
+  .login-box p{font-size:13px;color:#666;margin-bottom:20px}
+  #app{display:none}
 </style>
 </head>
 <body>
-  <header>
-    <div class="logo"><img id="logo" alt="logo" /><span id="brandName">Loading…</span><span class="demo-tag" id="demoTag" style="display:none">DEMO</span></div>
-    <div class="top-actions">
-      <button class="ghost-btn" onclick="openViewModal()">🧾 My Bill</button>
-      <button class="ghost-btn" onclick="openEditModal()">✏️ Edit Order</button>
-      <button class="cart-btn" onclick="toggleCart(true)">🛒 Cart <span class="badge" id="badge">0</span></button>
-    </div>
-  </header>
 
-  <section class="hero" id="hero">
-    <div class="slides" id="slides"></div>
-    <div class="hero-content">
-      <h1 id="heroTitle"></h1>
-      <p id="heroTag"></p>
-      <a class="map-btn" id="mapBtn" target="_blank" rel="noopener" style="display:none">📍 Find us on Google Maps</a>
+  <!-- 🔐 LOGIN SCREEN -->
+  <div id="loginScreen">
+    <div class="login-box">
+      <h1>🔐 Staff Login</h1>
+      <p id="loginSub">Log in to take and edit table orders.</p>
+      <input id="lu" placeholder="Username" autocomplete="username" />
+      <input id="lp" type="password" placeholder="Password" autocomplete="current-password" onkeydown="if(event.key==='Enter')doLogin()" />
+      <div class="err" id="loginErr"></div>
+      <button class="primary" id="loginBtn" onclick="doLogin()">Log In</button>
     </div>
-  </section>
-
-  <div class="searchbar">
-    <input id="search" placeholder="🔍 Search dishes…" oninput="applyFilter()" />
-    <div id="chips" style="display:flex;gap:8px;flex-wrap:wrap"></div>
   </div>
 
-  <main id="menu"><p class="empty">Loading menu…</p></main>
+  <!-- 🍽️ MAIN APP (hidden until login) -->
+  <div id="app">
+    <header>
+      <div class="logo"><span id="brandName">Loading…</span></div>
+      <div class="top-actions">
+        <span class="who" id="whoami"></span>
+        <button class="ghost-btn" onclick="openOrdersModal()">📋 Open Orders</button>
+        <button class="cart-btn" onclick="toggleCart(true)">🛒 Cart <span class="badge" id="badge">0</span></button>
+        <button class="ghost-btn" onclick="logout()">Logout</button>
+      </div>
+    </header>
 
-  <footer>
-    <p id="fName"></p><p id="fContact"></p>
-    <a class="map-card" id="mapLink" target="_blank" rel="noopener" style="display:none">
-      <img id="footerLogo" alt="logo" /><span>📍 View our location on Google Maps</span>
-    </a>
-  </footer>
+    <div class="searchbar">
+      <input id="search" placeholder="🔍 Search dishes…" oninput="applyFilter()" />
+      <div id="chips"></div>
+    </div>
 
+    <main id="menu"><p class="empty">Loading menu…</p></main>
+  </div>
+
+  <!-- CART DRAWER -->
   <div class="overlay" id="overlay" onclick="toggleCart(false)"></div>
   <aside class="drawer" id="drawer">
-    <header><span class="logo" style="font-size:18px" id="drawerTitle">Your Order</span>
+    <header><span class="logo" style="font-size:18px" id="drawerTitle">New Order</span>
       <button class="cart-btn" style="padding:6px 12px" onclick="toggleCart(false)">✕</button></header>
     <div class="items" id="cartItems"></div>
     <div class="checkout-area">
       <div class="editing-banner" id="editBanner"></div>
       <div class="total"><span>Total</span><span id="cartTotal"></span></div>
-
       <div class="toggle">
         <button id="btnDinein" class="active" onclick="setMode('Dine-in')">🍽️ Dine-in</button>
         <button id="btnDelivery" onclick="setMode('Delivery')">🛵 Delivery</button>
       </div>
-
       <div id="dineinFields">
         <input id="cTable" placeholder="Table Number (e.g. 5)" />
         <div class="err" id="eTable"></div>
-        <input id="cPhoneDine" placeholder="Phone number (optional)" />
-        <div class="hint">🔒 Optional — adds an extra lock so only you can re-open this bill.</div>
       </div>
-
       <div id="deliveryFields" style="display:none">
-        <input id="cName" placeholder="Your name" />
+        <input id="cName" placeholder="Customer name" />
         <div class="err" id="eName"></div>
         <input id="cPhone" placeholder="Phone number" />
         <div class="err" id="ePhone"></div>
         <textarea id="cAddr" rows="2" placeholder="Delivery address"></textarea>
         <div class="err" id="eAddr"></div>
       </div>
-
       <button class="primary" id="placeBtn" onclick="placeOrder()">Place Order</button>
+      <button class="secondary" id="newBtn" style="display:none" onclick="startFresh()">＋ Start a fresh order</button>
     </div>
   </aside>
 
-  <!-- EDIT (add more items) -->
-  <div class="modal" id="editModal">
+  <!-- OPEN ORDERS MODAL -->
+  <div class="modal" id="ordersModal">
     <div class="modal-box">
-      <h3>✏️ Edit an existing order</h3>
-      <p>Enter your Order ID (e.g. ORD-1) or your Table Number to load your order and add more items.</p>
-      <input id="lookupId" placeholder="Order ID (e.g. ORD-1)" />
-      <div style="text-align:center;color:#999;margin:6px 0;font-weight:700">— OR —</div>
-      <input id="lookupTable" placeholder="Table Number (e.g. 5)" />
+      <h3>📋 Open Orders</h3>
+      <p>Tap an order to load it, then add or remove items and press Update Order.</p>
+      <input id="lookupTable" placeholder="Or type a Table Number to load…" onkeydown="if(event.key==='Enter')fetchByTable()" />
       <div class="err" id="eLookup"></div>
-      <button class="primary" id="lookupBtn" onclick="fetchOrder()">Load My Order</button>
-      <button class="secondary" onclick="closeEditModal()">Cancel</button>
+      <div id="ordersList"><p class="empty">Loading…</p></div>
+      <button class="secondary" onclick="closeOrdersModal()">Close</button>
     </div>
-  </div>
-
-  <!-- SECURE VIEW BILL (token + optional phone) -->
-  <div class="modal" id="viewModal">
-    <div class="modal-box">
-      <h3>🧾 View My Bill</h3>
-      <p>Paste the secret bill link (or code) you got when ordering. Only you can open your bill.</p>
-      <input id="vToken" placeholder="Your secret bill code / link" />
-      <input id="vPhone" placeholder="Phone number (only if you entered one)" />
-      <div class="err" id="eView"></div>
-      <button class="primary" id="viewBtn" onclick="viewBill()">Open My Bill 🔒</button>
-      <button class="secondary" onclick="closeViewModal()">Cancel</button>
-    </div>
-  </div>
-
-  <!-- BILL RESULT (shows link after ordering + the bill itself) -->
-  <div class="modal" id="billModal">
-    <div class="modal-box" id="billBox"></div>
   </div>
 
   <div class="toast" id="toast"></div>
 
 <script>
-  // ▼▼▼ PASTE YOUR APPS SCRIPT WEB APP URL HERE (leave as-is to see the DEMO) ▼▼▼
+  // ▼▼▼ PASTE YOUR APPS SCRIPT WEB APP URL HERE ▼▼▼
   const API_URL = "https://script.google.com/macros/s/AKfycbwTaPxe-qM58KhFgt8jI9PHEVdKzJ2f82FDSRHQUfwrJJuGQ5IpjYfWI4BlmePRTozAfg/exec";
-  const IS_LIVE = !API_URL.includes("XXXXX") && API_URL !== "xxxx";
+  const IS_LIVE = API_URL !== "xxxx" && !API_URL.includes("XXXXX");
 
   const DEMO = {
-    settings: {
-      HotelName: "Vastad Special", Tagline: "Authentic flavours, served with love",
-      LogoURL: "https://images.unsplash.com/photo-1552566626-52f8b828add9?w=100&h=100&fit=crop",
-      Phone: "+91 98765 43210", Address: "Main Road, Your City", Currency: "₹",
-      HeroImages: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=1600&h=600&fit=crop,https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1600&h=600&fit=crop,https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=1600&h=600&fit=crop",
-      MapURL: "https://maps.google.com/?q=restaurant", BrandColor: "#C8A24B"
-    },
+    settings: { HotelName: "Vastad Special", Currency: "₹" },
     menu: [
       { Category: "Thali", ItemName: "Veg Thali", Description: "Wholesome veg platter", Price: 120, Type: "Veg", Tag: "Bestseller", Available: "Yes", PhotoURL: "" },
       { Category: "Thali", ItemName: "Chicken Thali", Description: "Loaded chicken platter", Price: 130, Type: "Nonveg", Tag: "", Available: "Yes", PhotoURL: "" },
-      { Category: "Thali", ItemName: "Mutton Thali", Description: "Rich mutton platter", Price: 250, Type: "Nonveg", Tag: "Chef's Special", Available: "Yes", PhotoURL: "" },
       { Category: "Starters", ItemName: "Paneer Tikka", Description: "Char-grilled cottage cheese", Price: 220, Type: "Veg", Tag: "", Available: "Yes", PhotoURL: "" },
-      { Category: "Rice & Biryani", ItemName: "Chicken Biryani", Description: "Aromatic biryani with chicken", Price: 240, Type: "Nonveg", Tag: "Bestseller", Available: "Yes", PhotoURL: "" },
+      { Category: "Rice & Biryani", ItemName: "Chicken Biryani", Description: "Aromatic biryani", Price: 240, Type: "Nonveg", Tag: "Bestseller", Available: "Yes", PhotoURL: "" },
       { Category: "Beverages / Drinks", ItemName: "Thumbs Up", Description: "Chilled soft drink", Price: 20, Type: "Veg", Tag: "", Available: "Yes", PhotoURL: "" }
     ]
   };
+  // DEMO logins (only used when not connected to a live sheet)
+  const DEMO_USERS = [{ username: "admin", password: "1234", name: "Demo Staff" }];
 
   let CFG = { currency: "₹" };
   let ALL_ITEMS = [];
   let activeCat = "All";
   let orderMode = "Dine-in";
   let editingOrderId = null;
-  let currentBill = null;              // stores the last opened order for download
+  let AUTH = null;                 // { username, password, name }
   const cart = {};
   const $ = function (id) { return document.getElementById(id); };
-  function unsplash(id) { return "https://images.unsplash.com/photo-" + id + "?w=500&h=350&fit=crop"; }
+  <!-- filename: index.html (continued — paste right after Part 1, before </script>) -->
+<!-- Code Generated by Sidekick is for learning and experimentation purposes only. -->
 
+  function unsplash(id) { return "https://images.unsplash.com/photo-" + id + "?w=500&h=350&fit=crop"; }
   const EXACT_PICS = {
     "veg thali":"1567620905732-2d1ec7ab7445","chicken thali":"1601050690597-df0568f70950",
     "mutton thali":"1585937421612-70a008356fbe","paneer tikka":"1567188040759-fb8a883dc6d8",
@@ -259,52 +220,56 @@
   function money(n) { return CFG.currency + Number(n).toLocaleString(); }
   function esc(s) { return String(s).replace(/'/g, "\\'"); }
 
-  function startSlides(imgs) {
-    const box = $("slides");
-    box.innerHTML = imgs.map(function (u, i) {
-      return "<div class='slide" + (i === 0 ? " active" : "") + "' style=\"background-image:url('" + driveFix(u) + "')\"></div>";
-    }).join("");
-    const slides = box.querySelectorAll(".slide");
-    if (slides.length < 2) return;
-    let idx = 0;
-    setInterval(function () {
-      slides[idx].classList.remove("active");
-      idx = (idx + 1) % slides.length;
-      slides[idx].classList.add("active");
-    }, 4000);
-  }
-  function getHeroImages(s) {
-    let imgs = s.HeroImages || s.HeroImage;
-    if (Array.isArray(imgs)) return imgs.filter(Boolean);
-    if (imgs) return String(imgs).split(",").map(function (x) { return x.trim(); }).filter(Boolean);
-    return DEMO.settings.HeroImages.split(",");
+  // ── 🔐 LOGIN ───────────────────────────────────────────
+  async function doLogin() {
+    const u = $("lu").value.trim(), pw = $("lp").value;
+    if (!u || !pw) { $("loginErr").textContent = "Enter username and password."; return; }
+    const btn = $("loginBtn"); btn.disabled = true; btn.textContent = "Checking…";
+    $("loginErr").textContent = "";
+    try {
+      let res;
+      if (!IS_LIVE) {
+        const hit = DEMO_USERS.find(function (x) { return x.username === u && x.password === pw; });
+        res = hit ? { ok: true, username: hit.username, name: hit.name } : { ok: false, error: "Try admin / 1234 (demo)." };
+      } else {
+        const url = API_URL + "?action=login&username=" + encodeURIComponent(u) + "&password=" + encodeURIComponent(pw);
+        res = await (await fetch(url)).json();
+      }
+      if (!res.ok) { $("loginErr").textContent = res.error || "Login failed."; }
+      else {
+        AUTH = { username: res.username, password: pw, name: res.name };
+        $("whoami").textContent = "👤 " + res.name;
+        $("loginScreen").style.display = "none";
+        $("app").style.display = "block";
+        load();
+      }
+    } catch (e) { $("loginErr").textContent = "Something went wrong. Try again."; }
+    btn.disabled = false; btn.textContent = "Log In";
   }
 
+  function logout() {
+    AUTH = null;
+    Object.keys(cart).forEach(function (k) { delete cart[k]; });
+    exitEditMode(); renderCart(); toggleCart(false);
+    $("lp").value = "";
+    $("app").style.display = "none";
+    $("loginScreen").style.display = "flex";
+  }
+
+  // ── LOAD MENU ──────────────────────────────────────────
   async function load() {
     let data;
     try {
       if (!IS_LIVE) throw new Error("demo");
       data = await (await fetch(API_URL)).json();
-    } catch (e) { data = DEMO; $("demoTag").style.display = "inline-block"; }
+    } catch (e) { data = DEMO; }
     const s = Array.isArray(data.settings) ? {} : data.settings;
     CFG.currency = s.Currency || "₹";
     if (s.BrandColor) document.documentElement.style.setProperty("--brand", s.BrandColor);
-    document.title = s.HotelName || "Hotel";
-    $("brandName").textContent = s.HotelName || "Hotel";
-    $("logo").src = driveFix(s.LogoURL);
-    $("footerLogo").src = driveFix(s.LogoURL);
-    $("heroTitle").textContent = s.HotelName || "Welcome";
-    $("heroTag").textContent = s.Tagline || "";
-    $("fName").textContent = s.HotelName || "";
-    $("fContact").textContent = [s.Address, s.Phone].filter(Boolean).join("  •  ");
-    if (s.MapURL) {
-      $("mapBtn").href = s.MapURL; $("mapBtn").style.display = "inline-block";
-      $("mapLink").href = s.MapURL; $("mapLink").style.display = "inline-flex";
-    }
-    startSlides(getHeroImages(s));
+    document.title = (s.HotelName || "Staff") + " — Orders";
+    $("brandName").textContent = (s.HotelName || "Hotel") + " · Staff";
     ALL_ITEMS = data.menu.filter(function (i) { return i.ItemName && String(i.Available).toLowerCase() !== "no"; });
     buildChips(); renderMenu();
-    checkToken();   // 🔑 auto-open a bill if the page was reached via a secret link
   }
 
   function buildChips() {
@@ -347,6 +312,7 @@
     $("menu").innerHTML = html || "<p class='empty'>No dishes match your search.</p>";
   }
 
+  // ── CART ───────────────────────────────────────────────
   function setMode(mode) {
     orderMode = mode;
     $("btnDinein").classList.toggle("active", mode === "Dine-in");
@@ -354,7 +320,6 @@
     $("dineinFields").style.display = mode === "Dine-in" ? "block" : "none";
     $("deliveryFields").style.display = mode === "Delivery" ? "block" : "none";
   }
-
   function addItem(name, price, img) {
     if (!cart[name]) cart[name] = { name: name, price: price, img: img, qty: 0 };
     cart[name].qty++;
@@ -378,7 +343,7 @@
         "<span>" + c.qty + "</span>" +
         "<button onclick=\"changeQty('" + esc(c.name) + "',1)\">+</button></div></div>";
     });
-    $("cartItems").innerHTML = html || "<p class='empty'>Your cart is empty.</p>";
+    $("cartItems").innerHTML = html || "<p class='empty'>Cart is empty.</p>";
     $("badge").textContent = count;
     $("cartTotal").textContent = money(total);
   }
@@ -391,37 +356,45 @@
     setTimeout(function () { t.classList.remove("show"); }, 2600);
   }
 
-  function openEditModal() { $("editModal").classList.add("open"); }
-  function closeEditModal() { $("editModal").classList.remove("open"); }
-  function openViewModal() { $("viewModal").classList.add("open"); }
-  function closeViewModal() { $("viewModal").classList.remove("open"); }
-  function closeBillModal() { $("billModal").classList.remove("open"); }
+  // ── OPEN ORDERS (list + load to edit) ─────────────────
+  function openOrdersModal() { $("ordersModal").classList.add("open"); loadOpenOrders(); }
+  function closeOrdersModal() { $("ordersModal").classList.remove("open"); }
 
-  async function fetchOrder() {
-    const id = $("lookupId").value.trim();
-    const table = $("lookupTable").value.trim();
-    if (!id && !table) { $("eLookup").textContent = "Enter an Order ID or Table Number"; return; }
-    const btn = $("lookupBtn"); btn.disabled = true; btn.textContent = "Loading…";
+  async function loadOpenOrders() {
+    if (!IS_LIVE) { $("ordersList").innerHTML = "<p class='empty'>Live site needed to list orders.</p>"; return; }
+    $("ordersList").innerHTML = "<p class='empty'>Loading…</p>";
+    try {
+      const res = await (await fetch(API_URL + "?action=listOpen")).json();
+      const list = res.orders || [];
+      if (!list.length) { $("ordersList").innerHTML = "<p class='empty'>No open orders.</p>"; return; }
+      $("ordersList").innerHTML = list.map(function (o) {
+        const label = o.table ? "Table " + o.table : o.orderType;
+        return "<div class='open-order' onclick=\"fetchById('" + esc(o.orderId) + "')\">" +
+          "<div><b>" + o.orderId + "</b><br><small>" + label + " · " + o.status + "</small></div>" +
+          "<b>" + money(o.total) + "</b></div>";
+      }).join("");
+    } catch (e) { $("ordersList").innerHTML = "<p class='empty'>Failed to load.</p>"; }
+  }
+
+  function fetchById(id) { fetchOrder(id, ""); }
+  function fetchByTable() {
+    const t = $("lookupTable").value.trim();
+    if (!t) { $("eLookup").textContent = "Type a table number."; return; }
+    fetchOrder("", t);
+  }
+
+  async function fetchOrder(id, table) {
+    if (!IS_LIVE) { $("eLookup").textContent = "Editing needs the live site."; return; }
     $("eLookup").textContent = "";
     try {
-      if (!IS_LIVE) {
-        $("eLookup").textContent = "Editing needs the live site (connect your Sheet URL).";
-        btn.disabled = false; btn.textContent = "Load My Order"; return;
-      }
       const q = id ? "id=" + encodeURIComponent(id) : "table=" + encodeURIComponent(table);
       const res = await (await fetch(API_URL + "?action=getOrder&" + q)).json();
-      if (!res.found) {
-        $("eLookup").textContent = "No active order found. Check the ID/Table number.";
-      } else {
-        loadOrderIntoCart(res);
-        closeEditModal();
-        toggleCart(true);
-        showToast("Loaded " + res.orderId + " — add items, then Update Order");
-      }
-    } catch (e) {
-      $("eLookup").textContent = "Something went wrong. Try again.";
-    }
-    btn.disabled = false; btn.textContent = "Load My Order";
+      if (!res.found) { $("eLookup").textContent = "No active order found."; return; }
+      loadOrderIntoCart(res);
+      closeOrdersModal();
+      toggleCart(true);
+      showToast("Loaded " + res.orderId + " — edit, then Update Order");
+    } catch (e) { $("eLookup").textContent = "Something went wrong."; }
   }
 
   function loadOrderIntoCart(order) {
@@ -431,36 +404,44 @@
     });
     editingOrderId = order.orderId;
     setMode(order.orderType === "Delivery" ? "Delivery" : "Dine-in");
-    if (order.table) $("cTable").value = order.table;
-    if (order.name) $("cName").value = order.name;
-    if (order.phone) $("cPhone").value = order.phone;
-    if (order.address) $("cAddr").value = order.address;
+    $("cTable").value = order.table || "";
+    $("cName").value = order.name || "";
+    $("cPhone").value = order.phone || "";
+    $("cAddr").value = order.address || "";
     $("drawerTitle").textContent = "Editing " + order.orderId;
-    $("editBanner").textContent = "✏️ Editing order " + order.orderId +
-      ". Add or change items, then press Update Order.";
+    $("editBanner").textContent = "✏️ Editing " + order.orderId + " (Table " + (order.table || "-") + "). Add/remove items, then Update Order.";
     $("editBanner").classList.add("show");
     $("placeBtn").textContent = "Update Order";
+    $("newBtn").style.display = "block";
     renderCart();
   }
 
   function exitEditMode() {
     editingOrderId = null;
-    $("drawerTitle").textContent = "Your Order";
+    $("drawerTitle").textContent = "New Order";
     $("editBanner").classList.remove("show");
     $("placeBtn").textContent = "Place Order";
+    $("newBtn").style.display = "none";
   }
 
+  function startFresh() {
+    Object.keys(cart).forEach(function (k) { delete cart[k]; });
+    ["cName", "cPhone", "cAddr", "cTable"].forEach(function (id) { $(id).value = ""; });
+    exitEditMode(); renderCart();
+    showToast("Started a fresh order");
+  }
 
+  // ── VALIDATE + SAVE ───────────────────────────────────
   function validate() {
     let ok = true;
     if (orderMode === "Dine-in") {
       const bad = !$("cTable").value.trim();
-      $("eTable").textContent = bad ? "Enter your table number" : "";
+      $("eTable").textContent = bad ? "Enter the table number" : "";
       if (bad) ok = false;
     } else {
-      const checks = [["cName", "eName", /.{2,}/, "Enter your name"],
+      const checks = [["cName", "eName", /.{2,}/, "Enter customer name"],
         ["cPhone", "ePhone", /^[+\d][\d\s-]{7,}$/, "Enter a valid phone"],
-        ["cAddr", "eAddr", /.{5,}/, "Enter your address"]];
+        ["cAddr", "eAddr", /.{5,}/, "Enter the address"]];
       checks.forEach(function (c) {
         const bad = !c[2].test($(c[0]).value.trim());
         $(c[1]).textContent = bad ? c[3] : "";
@@ -470,154 +451,44 @@
     return ok;
   }
 
-  // Read the phone from whichever field is active (Dine-in optional, Delivery required)
-  function currentPhone() {
-    return orderMode === "Dine-in"
-      ? $("cPhoneDine").value.trim()
-      : $("cPhone").value.trim();
-  }
-
   async function placeOrder() {
+    if (!AUTH) return logout();
     const items = Object.values(cart);
     if (!items.length) return showToast("Cart is empty");
     if (!validate()) return;
     const total = items.reduce(function (s, c) { return s + c.qty * c.price; }, 0);
     const payload = {
-      orderId: editingOrderId,
-      orderType: orderMode,
+      username: AUTH.username, password: AUTH.password,
+      orderId: editingOrderId, orderType: orderMode,
       table: orderMode === "Dine-in" ? $("cTable").value.trim() : "",
-      name: $("cName").value.trim(),
-      phone: currentPhone(),
+      name: $("cName").value.trim(), phone: $("cPhone").value.trim(),
       address: orderMode === "Delivery" ? $("cAddr").value.trim() : "",
       items: items, total: total
     };
     const btn = $("placeBtn"); btn.disabled = true; btn.textContent = "Saving…";
     const wasEditing = !!editingOrderId;
     try {
-      let orderId = editingOrderId, token = "";
+      let orderId = editingOrderId;
       if (IS_LIVE) {
         const res = await (await fetch(API_URL, {
           method: "POST", headers: { "Content-Type": "text/plain;charset=utf-8" },
           body: JSON.stringify(payload)
         })).json();
+        if (!res.ok) { showToast(res.error || "Save failed."); btn.disabled = false; btn.textContent = wasEditing ? "Update Order" : "Place Order"; return; }
         orderId = res.orderId || orderId;
-        token = res.token || "";       // 🔑 secret code from the backend
       }
-      Object.keys(cart).forEach(function (k) { delete cart[k]; });
-      ["cName", "cPhone", "cAddr", "cTable", "cPhoneDine"].forEach(function (id) { $(id).value = ""; });
-      exitEditMode(); renderCart(); toggleCart(false);
-      // Show the private bill link so the customer can save it to their phone
-      showBillLink(orderId, token, wasEditing);
-    } catch (e) {
-      showToast("Failed. Please try again.");
-    }
+      startFresh(); toggleCart(false);
+      const msg = wasEditing ? "✅ Order updated!" : "✅ Order placed!";
+      showToast(IS_LIVE ? msg + " (" + orderId + ")" : "✅ Demo order (no data sent)");
+    } catch (e) { showToast("Failed. Please try again."); }
     btn.disabled = false;
-    btn.textContent = wasEditing ? "Update Order" : "Place Order";
-  }
-
-  // 🔑 After ordering: show the secret link the customer must keep
-  function showBillLink(orderId, token, wasEditing) {
-    if (!IS_LIVE) { showToast("✅ Demo order (no data sent)"); return; }
-    const link = location.origin + location.pathname + "?token=" + encodeURIComponent(token);
-    $("billBox").innerHTML =
-      "<h3>" + (wasEditing ? "✅ Order updated!" : "✅ Order placed!") + "</h3>" +
-      "<p>Your Order ID is <b>" + orderId + "</b>. Save this private link — it's the key to re-open your bill anytime.</p>" +
-      "<div class='link-box' id='savedLink'>" + link + "</div>" +
-      "<button class='primary' onclick=\"copyLink('" + esc(link) + "')\">📋 Copy my bill link</button>" +
-      "<button class='secondary' onclick=\"closeBillModal()\">Done</button>";
-    $("billModal").classList.add("open");
-  }
-
-  function copyLink(link) {
-    navigator.clipboard.writeText(link).then(function () {
-      showToast("📋 Bill link copied — paste it somewhere safe!");
-    }).catch(function () { showToast("Copy failed — long-press to copy manually."); });
-  }
-
-  // 🔒 Pull a token out of a pasted code OR a full link
-  function extractToken(raw) {
-    const m = String(raw).match(/[?&]token=([^&]+)/);
-    return decodeURIComponent(m ? m[1] : raw.trim());
-  }
-
-  // 🔒 Secure "View My Bill" — token required, phone matched only if one was saved
-  async function viewBill() {
-    const token = extractToken($("vToken").value);
-    const phone = $("vPhone").value.trim();
-    if (!token) { $("eView").textContent = "Please paste your secret bill code or link."; return; }
-    const btn = $("viewBtn"); btn.disabled = true; btn.textContent = "Opening…";
-    $("eView").textContent = "";
-    try {
-      if (!IS_LIVE) {
-        $("eView").textContent = "Viewing bills needs the live site (connect your Sheet URL).";
-      } else {
-        const url = API_URL + "?action=getBill&token=" + encodeURIComponent(token) +
-          "&phone=" + encodeURIComponent(phone);
-        const res = await (await fetch(url)).json();
-        if (!res.ok) { $("eView").textContent = res.error || "Could not open this bill."; }
-        else { closeViewModal(); renderBill(res.order); }
-      }
-    } catch (e) {
-      $("eView").textContent = "Something went wrong. Try again.";
-    }
-    btn.disabled = false; btn.textContent = "Open My Bill 🔒";
-  }
-
-  // Auto-open when the page is reached via a ?token= link
-  function checkToken() {
-    const t = new URLSearchParams(location.search).get("token");
-    if (!t || !IS_LIVE) return;
-    $("vToken").value = t;
-    openViewModal();
-    $("eView").textContent = "Enter your phone number (only if you added one), then Open My Bill.";
-  }
-
-  // Draw the bill inside the modal + Download button
-  function renderBill(order) {
-    currentBill = order;
-    const rows = (order.items || []).map(function (x) {
-      return "<div class='bill-row'><span>" + x.name + " × " + x.qty + "</span><span>" +
-        money(x.qty * x.price) + "</span></div>";
-    }).join("");
-    const pill = String(order.billPaid).toLowerCase() === "yes"
-      ? "<span class='pill paid'>PAID</span>"
-      : "<span class='pill unpaid'>UNPAID</span>";
-    $("billBox").innerHTML =
-      "<h3>🧾 " + order.orderId + " " + pill + "</h3>" +
-      "<p>" + order.orderType + (order.table ? " · Table " + order.table : "") +
-        (order.phone ? " · " + order.phone : "") + "</p>" +
-      rows +
-      "<div class='total' style='margin-top:12px'><span>Total</span><span>" + money(order.total) + "</span></div>" +
-      "<button class='primary' onclick='downloadBill()'>📥 Download bill to my phone</button>" +
-      "<button class='secondary' onclick='closeBillModal()'>Close</button>";
-    $("billModal").classList.add("open");
-  }
-
-  // 📥 Save a plain-text copy of the bill onto the phone
-  function downloadBill() {
-    if (!currentBill) return;
-    const b = currentBill;
-    let txt = "BILL — " + b.orderId + " (" + b.orderType + ")\n";
-    if (b.table) txt += "Table: " + b.table + "\n";
-    txt += "\n";
-    (b.items || []).forEach(function (x) {
-      txt += x.name + " x" + x.qty + "  = " + money(x.qty * x.price) + "\n";
-    });
-    txt += "\nTOTAL: " + money(b.total) +
-      "\nStatus: " + (String(b.billPaid).toLowerCase() === "yes" ? "PAID" : "UNPAID");
-    const a = document.createElement("a");
-    a.href = URL.createObjectURL(new Blob([txt], { type: "text/plain" }));
-    a.download = b.orderId + "-bill.txt";
-    a.click();
-    showToast("📥 Bill saved to your phone");
+    btn.textContent = editingOrderId ? "Update Order" : "Place Order";
   }
 
   document.addEventListener("keydown", function (e) {
-    if (e.key === "Escape") {
-      toggleCart(false); closeEditModal(); closeViewModal(); closeBillModal();
-    }
+    if (e.key === "Escape") { toggleCart(false); closeOrdersModal(); }
   });
-  load();
+  // Note: load() runs only AFTER a successful login.
 </script>
 </body>
 </html>
