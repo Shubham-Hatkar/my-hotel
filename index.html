@@ -11,10 +11,9 @@
   *{margin:0;padding:0;box-sizing:border-box}
   body{font-family:'Open Sans',sans-serif;color:var(--text);background:var(--cream)}
   h1,h2,.logo{font-family:'Playfair Display',serif}
-  header{position:sticky;top:0;z-index:40;background:var(--dark);color:#fff;display:flex;align-items:center;
-    justify-content:space-between;padding:14px 32px}
+  header{position:sticky;top:0;z-index:40;background:var(--dark);color:#fff;display:flex;align-items:center;justify-content:space-between;padding:14px 32px}
   .logo{display:flex;align-items:center;gap:14px;font-size:26px;font-weight:700}
-  .logo img{height:60px;width:60px;object-fit:cover;border-radius:50%;border:3px solid var(--brand);box-shadow:0 2px 8px rgba(0,0,0,.3)}
+  .logo img{height:60px;width:60px;object-fit:cover;border-radius:50%;border:3px solid var(--brand)}
   .top-actions{display:flex;gap:10px;align-items:center}
   .cart-btn{background:var(--brand);color:#1f2622;border:none;padding:10px 18px;border-radius:30px;font-weight:700;cursor:pointer;transition:.15s;position:relative}
   .cart-btn:hover{filter:brightness(1.08)}
@@ -62,7 +61,7 @@
   .line img{height:50px;width:50px;object-fit:cover;border-radius:8px}
   .qty{display:flex;align-items:center;gap:8px}
   .qty button{width:26px;height:26px;border:1px solid var(--gray);background:#fff;border-radius:6px;cursor:pointer;font-weight:700}
-  .checkout-area{padding:16px;border-top:1px solid var(--gray);max-height:60vh;overflow:auto}
+  .checkout-area{padding:16px;border-top:1px solid var(--gray);max-height:62vh;overflow:auto}
   .total{display:flex;justify-content:space-between;font-weight:800;font-size:20px;margin-bottom:12px}
   input,textarea{width:100%;padding:10px;border:1px solid var(--gray);border-radius:8px;margin-bottom:8px;font-family:inherit}
   .primary{width:100%;background:var(--brand);color:#1f2622;border:none;padding:14px;border-radius:10px;font-weight:800;font-size:16px;cursor:pointer}
@@ -131,19 +130,16 @@
       <div class="editing-banner" id="editBanner"></div>
       <div class="total"><span>Total</span><span id="cartTotal"></span></div>
 
-      <!-- ▼ Dine-in / Delivery choice -->
       <div class="toggle">
         <button id="btnDinein" class="active" onclick="setMode('Dine-in')">🍽️ Dine-in</button>
         <button id="btnDelivery" onclick="setMode('Delivery')">🛵 Delivery</button>
       </div>
 
-      <!-- ▼ Dine-in field -->
       <div id="dineinFields">
         <input id="cTable" placeholder="Table Number (e.g. 5)" />
         <div class="err" id="eTable"></div>
       </div>
 
-      <!-- ▼ Delivery fields -->
       <div id="deliveryFields" style="display:none">
         <input id="cName" placeholder="Your name" />
         <div class="err" id="eName"></div>
@@ -157,12 +153,11 @@
     </div>
   </aside>
 
-  <!-- ▼ Edit-order modal -->
   <div class="modal" id="editModal">
     <div class="modal-box">
       <h3>✏️ Edit an existing order</h3>
-      <p>Enter your Order ID (e.g. ORD-1001) or your Table Number to load your order and add more items.</p>
-      <input id="lookupId" placeholder="Order ID (e.g. ORD-1001)" />
+      <p>Enter your Order ID (e.g. ORD-1) or your Table Number to load your order and add more items.</p>
+      <input id="lookupId" placeholder="Order ID (e.g. ORD-1)" />
       <div style="text-align:center;color:#999;margin:6px 0;font-weight:700">— OR —</div>
       <input id="lookupTable" placeholder="Table Number (e.g. 5)" />
       <div class="err" id="eLookup"></div>
@@ -187,37 +182,34 @@
       MapURL: "https://maps.google.com/?q=restaurant", BrandColor: "#C8A24B"
     },
     menu: [
-      { Category: "Starters", ItemName: "Paneer Tikka", Description: "Char-grilled cottage cheese", Price: 220, Type: "Veg", Tag: "Bestseller", Available: "Yes", PhotoURL: "" },
-      { Category: "Main Course", ItemName: "Butter Chicken", Description: "Creamy tomato gravy with chicken", Price: 340, Type: "Nonveg", Tag: "Bestseller", Available: "Yes", PhotoURL: "" },
-      { Category: "Soups", ItemName: "Veg Soup", Description: "Hearty mixed vegetable soup", Price: 90, Type: "Veg", Tag: "", Available: "Yes", PhotoURL: "" },
-      { Category: "Soups", ItemName: "Chicken Soup", Description: "Warm chicken broth", Price: 120, Type: "Nonveg", Tag: "", Available: "Yes", PhotoURL: "" },
+      { Category: "Thali", ItemName: "Veg Thali", Description: "Wholesome veg platter", Price: 120, Type: "Veg", Tag: "Bestseller", Available: "Yes", PhotoURL: "" },
+      { Category: "Thali", ItemName: "Chicken Thali", Description: "Loaded chicken platter", Price: 130, Type: "Nonveg", Tag: "", Available: "Yes", PhotoURL: "" },
+      { Category: "Thali", ItemName: "Mutton Thali", Description: "Rich mutton platter", Price: 250, Type: "Nonveg", Tag: "Chef's Special", Available: "Yes", PhotoURL: "" },
+      { Category: "Starters", ItemName: "Paneer Tikka", Description: "Char-grilled cottage cheese", Price: 220, Type: "Veg", Tag: "", Available: "Yes", PhotoURL: "" },
       { Category: "Rice & Biryani", ItemName: "Chicken Biryani", Description: "Aromatic biryani with chicken", Price: 240, Type: "Nonveg", Tag: "Bestseller", Available: "Yes", PhotoURL: "" },
-      { Category: "Beverages / Drinks", ItemName: "Thumbs Up", Description: "Chilled soft drink", Price: 40, Type: "Veg", Tag: "", Available: "Yes", PhotoURL: "" },
-      { Category: "Thali", ItemName: "Vastad Special Chicken Thali", Description: "Our signature loaded chicken thali", Price: 380, Type: "Nonveg", Tag: "Chef's Special", Available: "Yes", PhotoURL: "" }
+      { Category: "Beverages / Drinks", ItemName: "Thumbs Up", Description: "Chilled soft drink", Price: 20, Type: "Veg", Tag: "", Available: "Yes", PhotoURL: "" }
     ]
   };
 
   let CFG = { currency: "₹" };
   let ALL_ITEMS = [];
   let activeCat = "All";
-  let orderMode = "Dine-in";     // ▼ current order type
-  let editingOrderId = null;     // ▼ set when editing an existing order
+  let orderMode = "Dine-in";
+  let editingOrderId = null;
   const cart = {};
   const $ = function (id) { return document.getElementById(id); };
   function unsplash(id) { return "https://images.unsplash.com/photo-" + id + "?w=500&h=350&fit=crop"; }
 
   const EXACT_PICS = {
-    "paneer tikka":"1567188040759-fb8a883dc6d8","butter chicken":"1603894584373-5ac82b2ae398",
-    "veg soup":"1547592180-85f173990554","chicken soup":"1604152135912-04a022e23696",
-    "chicken biryani":"1563379091339-03b21ab4a4f8","thumbs up":"1581006852262-e4307cf6283a",
-    "vastad special chicken thali":"1601050690597-df0568f70950"
+    "veg thali":"1567620905732-2d1ec7ab7445","chicken thali":"1601050690597-df0568f70950",
+    "mutton thali":"1585937421612-70a008356fbe","paneer tikka":"1567188040759-fb8a883dc6d8",
+    "chicken biryani":"1563379091339-03b21ab4a4f8","thumbs up":"1581006852262-e4307cf6283a"
   };
   const FOOD_PICS = {
     paneer:"1567188040759-fb8a883dc6d8",soup:"1547592180-85f173990554",biryani:"1563379091339-03b21ab4a4f8",
     "fried rice":"1603133872878-684f208fb84b",noodles:"1585032226651-759b368d7246",thali:"1567620905732-2d1ec7ab7445",
     mutton:"1585937421612-70a008356fbe",chicken:"1603894584373-5ac82b2ae398",rice:"1516684732162-798a0062be99",
-    icecream:"1560008581-09826d1de69e","ice-cream":"1560008581-09826d1de69e",dessert:"1551024601-bec78aea704b",
-    thumbs:"1581006852262-e4307cf6283a",soda:"1581006852262-e4307cf6283a",drink:"1544145945-f90425340c7e"
+    dessert:"1551024601-bec78aea704b",thumbs:"1581006852262-e4307cf6283a",drink:"1544145945-f90425340c7e"
   };
   const DEFAULT_PIC = "1504674900247-0877df9cc836";
 
@@ -324,7 +316,6 @@
     $("menu").innerHTML = html || "<p class='empty'>No dishes match your search.</p>";
   }
 
-  // ▼ Switch between Dine-in and Delivery
   function setMode(mode) {
     orderMode = mode;
     $("btnDinein").classList.toggle("active", mode === "Dine-in");
@@ -335,4 +326,156 @@
 
   function addItem(name, price, img) {
     if (!cart[name]) cart[name] = { name: name, price: price, img: img, qty: 0 };
-    cart[name
+    cart[name].qty++;
+    renderCart();
+    showToast(name + " added");
+  }
+  function changeQty(name, d) {
+    if (!cart[name]) return;
+    cart[name].qty += d;
+    if (cart[name].qty <= 0) delete cart[name];
+    renderCart();
+  }
+  function renderCart() {
+    const list = Object.values(cart);
+    let count = 0, total = 0, html = "";
+    list.forEach(function (c) {
+      count += c.qty; total += c.qty * c.price;
+      html += "<div class='line'><img src='" + (c.img || "") + "'>" +
+        "<div style='flex:1'><b>" + c.name + "</b><br><small>" + money(c.price) + "</small></div>" +
+        "<div class='qty'><button onclick=\"changeQty('" + esc(c.name) + "',-1)\">−</button>" +
+        "<span>" + c.qty + "</span>" +
+        "<button onclick=\"changeQty('" + esc(c.name) + "',1)\">+</button></div></div>";
+    });
+    $("cartItems").innerHTML = html || "<p class='empty'>Your cart is empty.</p>";
+    $("badge").textContent = count;
+    $("cartTotal").textContent = money(total);
+  }
+  function toggleCart(open) {
+    $("drawer").classList.toggle("open", open);
+    $("overlay").classList.toggle("open", open);
+  }
+  function showToast(msg) {
+    const t = $("toast"); t.textContent = msg; t.classList.add("show");
+    setTimeout(function () { t.classList.remove("show"); }, 2600);
+  }
+
+  function openEditModal() { $("editModal").classList.add("open"); }
+  function closeEditModal() { $("editModal").classList.remove("open"); }
+
+  async function fetchOrder() {
+    const id = $("lookupId").value.trim();
+    const table = $("lookupTable").value.trim();
+    if (!id && !table) { $("eLookup").textContent = "Enter an Order ID or Table Number"; return; }
+    const btn = $("lookupBtn"); btn.disabled = true; btn.textContent = "Loading…";
+    $("eLookup").textContent = "";
+    try {
+      if (!IS_LIVE) {
+        $("eLookup").textContent = "Editing needs the live site (connect your Sheet URL).";
+        btn.disabled = false; btn.textContent = "Load My Order"; return;
+      }
+      const q = id ? "id=" + encodeURIComponent(id) : "table=" + encodeURIComponent(table);
+      const res = await (await fetch(API_URL + "?action=getOrder&" + q)).json();
+      if (!res.found) {
+        $("eLookup").textContent = "No active order found. Check the ID/Table number.";
+      } else {
+        loadOrderIntoCart(res);
+        closeEditModal();
+        toggleCart(true);
+        showToast("Loaded " + res.orderId + " — add items, then Update Order");
+      }
+    } catch (e) {
+      $("eLookup").textContent = "Something went wrong. Try again.";
+    }
+    btn.disabled = false; btn.textContent = "Load My Order";
+  }
+
+  function loadOrderIntoCart(order) {
+    Object.keys(cart).forEach(function (k) { delete cart[k]; });
+    (order.items || []).forEach(function (it) {
+      cart[it.name] = { name: it.name, price: it.price, img: it.img || "", qty: it.qty };
+    });
+    editingOrderId = order.orderId;
+    setMode(order.orderType === "Delivery" ? "Delivery" : "Dine-in");
+    if (order.table) $("cTable").value = order.table;
+    if (order.name) $("cName").value = order.name;
+    if (order.phone) $("cPhone").value = order.phone;
+    if (order.address) $("cAddr").value = order.address;
+    $("drawerTitle").textContent = "Editing " + order.orderId;
+    $("editBanner").textContent = "✏️ Editing order " + order.orderId +
+      ". Add or change items, then press Update Order.";
+    $("editBanner").classList.add("show");
+    $("placeBtn").textContent = "Update Order";
+    renderCart();
+  }
+
+  function exitEditMode() {
+    editingOrderId = null;
+    $("drawerTitle").textContent = "Your Order";
+    $("editBanner").classList.remove("show");
+    $("placeBtn").textContent = "Place Order";
+  }
+
+  function validate() {
+    let ok = true;
+    if (orderMode === "Dine-in") {
+      const bad = !$("cTable").value.trim();
+      $("eTable").textContent = bad ? "Enter your table number" : "";
+      if (bad) ok = false;
+    } else {
+      const checks = [["cName", "eName", /.{2,}/, "Enter your name"],
+        ["cPhone", "ePhone", /^[+\d][\d\s-]{7,}$/, "Enter a valid phone"],
+        ["cAddr", "eAddr", /.{5,}/, "Enter your address"]];
+      checks.forEach(function (c) {
+        const bad = !c[2].test($(c[0]).value.trim());
+        $(c[1]).textContent = bad ? c[3] : "";
+        if (bad) ok = false;
+      });
+    }
+    return ok;
+  }
+
+  async function placeOrder() {
+    const items = Object.values(cart);
+    if (!items.length) return showToast("Cart is empty");
+    if (!validate()) return;
+    const total = items.reduce(function (s, c) { return s + c.qty * c.price; }, 0);
+    const payload = {
+      orderId: editingOrderId,
+      orderType: orderMode,
+      table: orderMode === "Dine-in" ? $("cTable").value.trim() : "",
+      name: $("cName").value.trim(),
+      phone: $("cPhone").value.trim(),
+      address: orderMode === "Delivery" ? $("cAddr").value.trim() : "",
+      items: items, total: total
+    };
+    const btn = $("placeBtn"); btn.disabled = true; btn.textContent = "Saving…";
+    const wasEditing = !!editingOrderId;
+    try {
+      let orderId = editingOrderId;
+      if (IS_LIVE) {
+        const res = await (await fetch(API_URL, {
+          method: "POST", headers: { "Content-Type": "text/plain;charset=utf-8" },
+          body: JSON.stringify(payload)
+        })).json();
+        orderId = res.orderId || orderId;
+      }
+      Object.keys(cart).forEach(function (k) { delete cart[k]; });
+      ["cName", "cPhone", "cAddr", "cTable"].forEach(function (id) { $(id).value = ""; });
+      exitEditMode(); renderCart(); toggleCart(false);
+      const msg = wasEditing ? "✅ Order updated!" : "✅ Order placed!";
+      showToast(IS_LIVE ? msg + " Your ID: " + orderId : "✅ Demo order (no data sent)");
+    } catch (e) {
+      showToast("Failed. Please try again.");
+    }
+    btn.disabled = false;
+    btn.textContent = wasEditing ? "Update Order" : "Place Order";
+  }
+
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape") { toggleCart(false); closeEditModal(); }
+  });
+  load();
+</script>
+</body>
+</html>
